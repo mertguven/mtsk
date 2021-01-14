@@ -17,3 +17,7 @@ $("#registerForm").on("submit",function(e){
         return false;
     }
 })
+
+$("#btnClose").on('click', function () {
+    Session.Remove(“token”);
+});

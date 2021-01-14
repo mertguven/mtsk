@@ -1,4 +1,6 @@
-﻿<html lang="tr">
+﻿@model mtsk.ViewModel.MyBasketViewModel
+
+<html lang="tr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,22 +26,22 @@
             <button class="navbar-toggler" data-toggle="collapse" data-target="#menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a href="Home" class="navbar-brand">MSTK</a>
+            <a href="Home" class="navbar-brand">MTSK</a>
             <div class="collapse navbar-collapse" id="menu">
                 <ul class="navbar-nav ml-auto">
                     <span class="text-white mt-2">Hoşgeldiniz</span>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Beytullah Tiryaki
+                            @Session["name"]
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="nav-link dropdown-item" href="myProfile.html">Profilim</a>
+                            <a class="nav-link dropdown-item" href="MyProfile">Profilim</a>
                         </div>
                     </li>
                     <span class="text-white mt-2">|</span>
                     <li class="nav-item">
-                        <a href="Home" class="nav-link text-white"> ÇIKIŞ </a>
+                        @Html.ActionLink("ÇIKIŞ", "SessionRemove", "Home", new { @class = "nav-link text-white" })
                     </li>
                 </ul>
             </div>
@@ -53,91 +55,26 @@
                         <h5><i class="fas fa-shopping-basket"></i> Sepetim</h5>
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div id="imgDiv" class="col-md-2">
-                                <img src="img/maskeResmi.jpg" alt="Maske Resmi"
-                                    style="width: 100px; height: 100px;">
+                        @foreach (var x in @Model.getBasketResponseMessage.data.siparisData)
+                        {
+                            <div class="row">
+                                <div id="imgDiv" class="col-md-2">
+                                    <img src="img/maskeResmi.jpg" alt="Maske Resmi"
+                                         style="width: 100px; height: 100px;">
+                                </div>
+                                <div class="col-md-4">
+                                    <div id="siparisAdi">Maske</div>
+                                    <div id="satici"><span>Satıcı : </span>MTSK</div>
+                                    <div id="adet"><span>Adet : </span>@x.ORDERPIECE</div>
+                                    <div id="siparisIslemleri"><a href=""><i class="fas fa-trash-alt"></i> Sil</a></div>
+                                </div>
+                                <div class="col">
+                                    <div id="siparisTutari">@x.ORDERPRICE TL</div>
+                                    <div id="kargoDiv"><i id="kargoDiv" class="fas fa-truck"></i> Ücretsiz Kargo</div>
+                                </div>
                             </div>
-                            <div class="col-md-4">
-                                <div id="siparisAdi">Maske</div>
-                                <div id="satici"><span>Satıcı : </span>Beytullah Tiryaki</div>
-                                <div id="adet"><span>Adet : </span>5</div>
-                                <div id="siparisIslemleri"><a href=""><i class="fas fa-trash-alt"></i> Sil</a></div>
-                            </div>
-                            <div class="col">
-                                <div id="siparisTutari">120,00 TL</div>
-                                <div id="kargoDiv"><i id="kargoDiv" class="fas fa-truck"></i> Ücretsiz Kargo</div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row mt-2">
-                            <div id="imgDiv" class="col-md-2">
-                                <img src="img/maskeResmi.jpg" alt="Maske Resmi"
-                                    style="width: 100px; height: 100px;">
-                            </div>
-                            <div class="col-md-4">
-                                <div id="siparisAdi">Maske</div>
-                                <div id="satici"><span>Satıcı : </span>Beytullah Tiryaki</div>
-                                <div id="adet"><span>Adet : </span>5</div>
-                                <div id="siparisIslemleri"><a href=""><i class="fas fa-trash-alt"></i> Sil</a></div>
-                            </div>
-                            <div class="col">
-                                <div id="siparisTutari">120,00 TL</div>
-                                <div id="kargoDiv"><i id="kargoDiv" class="fas fa-truck"></i> Ücretsiz Kargo</div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row mt-2">
-                            <div id="imgDiv" class="col-md-2">
-                                <img src="img/maskeResmi.jpg" alt="Maske Resmi"
-                                    style="width: 100px; height: 100px;">
-                            </div>
-                            <div class="col-md-4">
-                                <div id="siparisAdi">Maske</div>
-                                <div id="satici"><span>Satıcı : </span>Beytullah Tiryaki</div>
-                                <div id="adet"><span>Adet : </span>5</div>
-                                <div id="siparisIslemleri"><a href=""><i class="fas fa-trash-alt"></i> Sil</a></div>
-                            </div>
-                            <div class="col">
-                                <div id="siparisTutari">120,00 TL</div>
-                                <div id="kargoDiv"><i id="kargoDiv" class="fas fa-truck"></i> Ücretsiz Kargo</div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row mt-2">
-                            <div id="imgDiv" class="col-md-2">
-                                <img src="img/maskeResmi.jpg" alt="Maske Resmi"
-                                    style="width: 100px; height: 100px;">
-                            </div>
-                            <div class="col-md-4">
-                                <div id="siparisAdi">Maske</div>
-                                <div id="satici"><span>Satıcı : </span>Beytullah Tiryaki</div>
-                                <div id="adet"><span>Adet : </span>5</div>
-                                <div id="siparisIslemleri"><a href=""><i class="fas fa-trash-alt"></i> Sil</a></div>
-                            </div>
-                            <div class="col">
-                                <div id="siparisTutari">120,00 TL</div>
-                                <div id="kargoDiv"><i id="kargoDiv" class="fas fa-truck"></i> Ücretsiz Kargo</div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row mt-2">
-                            <div id="imgDiv" class="col-md-2">
-                                <img src="img/maskeResmi.jpg" alt="Maske Resmi"
-                                    style="width: 100px; height: 100px;">
-                            </div>
-                            <div class="col-md-4">
-                                <div id="siparisAdi">Maske</div>
-                                <div id="satici"><span>Satıcı : </span>Beytullah Tiryaki</div>
-                                <div id="adet"><span>Adet : </span>5</div>
-                                <div id="siparisIslemleri"><a href=""><i class="fas fa-trash-alt"></i> Sil</a></div>
-                            </div>
-                            <div class="col">
-                                <div id="siparisTutari">120,00 TL</div>
-                                <div id="kargoDiv"><i id="kargoDiv" class="fas fa-truck"></i> Ücretsiz Kargo</div>
-                            </div>
-                        </div>
-
+                            <hr>
+                        }
                     </div>
                 </div>
             </div>
@@ -150,7 +87,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-7">Ürün Toplamı : </div>
-                                <div class="col-md-5">240,00 TL</div>
+                                <div class="col-md-5">@ViewBag.totalPiece ADET</div>
                             </div>
                             <div class="row">
                                 <div class="col-md-7">Kargo : </div>
@@ -159,7 +96,7 @@
                             <hr>
                             <div class="row" id="odenecekTutar">
                                 <div class="col-md-7">Ödenecek Tutar : </div>
-                                <div class="col-md-5">240,00 TL</div>
+                                <div class="col-md-5">@ViewBag.totalPrice TL</div>
                             </div>
                             <div class="row mt-3"><button class="form-control btn btn-outline-primary">Siparişi
                                     Tamamla</button></div>
@@ -258,82 +195,26 @@
                             </div>
                             <!-- Kullanıcının kayıtlı adresleri -->
                             <div class="row ml-1" id="adresSecenekleri">
-                                <!-- Adres 1 -->
-                                <div class="card mr-2 mb-2">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-10">
-                                                <!-- Kullanıcının kayıtlı adresindeki il -->
-                                                <h5 class="card-title">İstanbul</h5>
-                                            </div>
-                                            <div class="col-md-2 form-check" style="text-align: right;">
-                                                <input class="form-check-input" type="radio" name="addressRadios"
-                                                    id="Radio1">
-                                            </div>
+                                @foreach (var x in @Model.getBasketResponseMessage.data.addressData)
+                                {
+                            <div class="card mr-2 mb-2">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <!-- Kullanıcının kayıtlı adresindeki il -->
+                                            <h5 class="card-title">@x.CITY</h5>
                                         </div>
-                                        <!-- Kullanıcının kayıtlı adresindeki ilçe -->
-                                        <h6 class="card-subtitle mb-2 text-muted">Esenyurt</h6>
-                                        <!-- Kullanıcının kayıtlı adresindeki açık adres -->
-                                        <p class="card-text">İstiklal mahallesi platin sokak no:29 daire:05</p>
-                                    </div>
-                                </div>
-                                <!-- Adres 2 -->
-                                <div class="card mr-2 mb-2">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-10">
-                                                <!-- Kullanıcının kayıtlı adresindeki il -->
-                                                <h5 class="card-title">İstanbul</h5>
-                                            </div>
-                                            <div class="col-md-2 form-check" style="text-align: right;">
-                                                <input class="form-check-input" type="radio" name="addressRadios"
-                                                    id="Radio2">
-                                            </div>
+                                        <div class="col-md-2 form-check" style="text-align: right;">
+                                            <input class="form-check-input" type="radio" name="addressRadios"
+                                                   id="Radio1">
                                         </div>
-                                        <!-- Kullanıcının kayıtlı adresindeki ilçe -->
-                                        <h6 class="card-subtitle mb-2 text-muted">Esenyurt</h6>
-                                        <!-- Kullanıcının kayıtlı adresindeki açık adres -->
-                                        <p class="card-text">İstiklal mahallesi platin sokak no:29 daire:05</p>
                                     </div>
+                                    <!-- Kullanıcının kayıtlı adresindeki ilçe -->
+                                    <h6 class="card-subtitle mb-2 text-muted">@x.DISTRICT</h6>
+                                    <!-- Kullanıcının kayıtlı adresindeki açık adres -->
+                                    <p class="card-text">@x.OPENADDRESS</p>
                                 </div>
-                                <!-- Adres 3 -->
-                                <div class="card mr-2 mb-2">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-10">
-                                                <!-- Kullanıcının kayıtlı adresindeki il -->
-                                                <h5 class="card-title">İstanbul</h5>
-                                            </div>
-                                            <div class="col-md-2 form-check" style="text-align: right;">
-                                                <input class="form-check-input" type="radio" name="addressRadios"
-                                                    id="Radio2">
-                                            </div>
-                                        </div>
-                                        <!-- Kullanıcının kayıtlı adresindeki ilçe -->
-                                        <h6 class="card-subtitle mb-2 text-muted">Esenyurt</h6>
-                                        <!-- Kullanıcının kayıtlı adresindeki açık adres -->
-                                        <p class="card-text">İstiklal mahallesi platin sokak no:29 daire:05</p>
-                                    </div>
-                                </div>
-                                <!-- Adres 4 -->
-                                <div class="card mr-2 mb-2">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-10">
-                                                <!-- Kullanıcının kayıtlı adresindeki il -->
-                                                <h5 class="card-title">İstanbul</h5>
-                                            </div>
-                                            <div class="col-md-2 form-check" style="text-align: right;">
-                                                <input class="form-check-input" type="radio" name="addressRadios"
-                                                    id="Radio2">
-                                            </div>
-                                        </div>
-                                        <!-- Kullanıcının kayıtlı adresindeki ilçe -->
-                                        <h6 class="card-subtitle mb-2 text-muted">Esenyurt</h6>
-                                        <!-- Kullanıcının kayıtlı adresindeki açık adres -->
-                                        <p class="card-text">İstiklal mahallesi platin sokak no:29 daire:05</p>
-                                    </div>
-                                </div>
+                            </div>}
                             </div>
                         </div>
                         <!-- Ödeme yöntemi için oluşturduğumuz collapse -->

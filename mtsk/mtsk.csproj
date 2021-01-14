@@ -94,6 +94,9 @@
     <Compile Include="Models\Requests\RegisterRequestMessage.cs" />
     <Compile Include="Models\Responses\RegisterResponseMessage.cs" />
     <Compile Include="ViewModel\MyProfileViewModel.cs" />
+    <Compile Include="ViewModel\HomeViewModel.cs" />
+    <Compile Include="ViewModel\MyBasketViewModel.cs" />
+    <Compile Include="Models\Responses\GetBasketResponseMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

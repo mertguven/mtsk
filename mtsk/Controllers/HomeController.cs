@@ -21,8 +21,12 @@ namespace mtsk.Controllers
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Session["token"]);
                 var response = client.GetStringAsync(url);
                 Console.WriteLine(response.Result);
-                GetUserInformationResponseMessage message = new GetUserInformationResponseMessage();
-                message = JsonConvert.DeserializeObject<GetUserInformationResponseMessage>(response.Result);
+                HomeViewModel message = new HomeViewModel();
+                message.getUserInformationResponseMessage = JsonConvert.DeserializeObject<GetUserInformationResponseMessage>(response.Result);
+                if (Session["token"] != null)
+                {
+                    Session["name"] = message.getUserInformationResponseMessage.data.userName;
+                }
                 return View(message);
             }
         }
