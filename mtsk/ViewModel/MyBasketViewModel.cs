@@ -10,5 +10,7 @@ namespace mtsk.ViewModel
         public DeleteOrderRequestMessage deleteOrderRequestMessage { get; set; }
         public DeleteOrderResponseMessage deleteOrderResponseMessage { get; set; }
         public OrderCompleteRequestMessage orderCompleteRequestMessage { get; set; }
+        public OrderCompleteResponseMessage orderCompleteResponseMessage { get; set; }
+        public DeleteAllOrderResponseMessage deleteAllOrderResponseMessage { get; set; }
     }
 }

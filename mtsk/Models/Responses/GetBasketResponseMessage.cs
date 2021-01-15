@@ -18,7 +18,6 @@ namespace mtsk.Models.Responses
             public int TEMPORDERID { get; set; }
             public int TEMPORDERPIECE { get; set; }
             public int TEMPORDERPRICE { get; set; }
-            public int TEMPORDERCASE { get; set; }
         }
 
         public class AddressData

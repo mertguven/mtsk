@@ -102,6 +102,8 @@
     <Compile Include="Models\Requests\DeleteOrderRequestMessage.cs" />
     <Compile Include="Models\Responses\DeleteOrderResponseMessage.cs" />
     <Compile Include="Models\Requests\OrderCompleteRequestMessage.cs" />
+    <Compile Include="Models\Responses\OrderCompleteResponseMessage.cs" />
+    <Compile Include="Models\Responses\DeleteAllOrderResponseMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
@@ -160,6 +162,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\MyBasket\Index.cshtml" />
     <Content Include="Views\MyProfile\Index.cshtml" />
+    <Content Include="Views\MyBasket\OrderComplete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="js\bootstrap.bundle.min.js.map" />

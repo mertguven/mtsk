@@ -1,8 +1,5 @@
 ﻿@model mtsk.ViewModel.MyBasketViewModel
 
-
-
-
 <html lang="tr">
 
 
@@ -24,10 +21,6 @@
           crossorigin="anonymous" />
 </head>
 
-<script>$(Document).ready(function () {
-        var deger = $("#adresSecenekleri input[type='radio']:checked").val();
-        Console.log(deger);
-    });</script>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -56,6 +49,10 @@
             </div>
         </div>
     </nav>
+    @using (Html.BeginForm("OrderComplete", "MyBasket", FormMethod.Post))
+    {
+
+    
     <div class="container" id="sepetContainer">
         <div class="row">
             <div class="col-md-9 mb-3">
@@ -75,7 +72,7 @@
                     <div id="siparisAdi">Maske</div>
                     <div id="satici"><span>Satıcı : </span>MTSK</div>
                     <div id="adet"><span>Adet : </span>@x.TEMPORDERPIECE</div>
-                    @Html.ActionLink(" ", "Index", "MyBasket", new { deleteId = x.TEMPORDERID }, new { @class = "fas fa-trash-alt btn btn-outline-danger" })
+                    @Html.ActionLink(" ", "Delete", "MyBasket", new { deleteId = x.TEMPORDERID }, new { @class = "fas fa-trash-alt text-danger" })
                 </div>
                 <div class="col">
                     <div id="siparisTutari">@x.TEMPORDERPRICE TL</div>
@@ -107,7 +104,8 @@
                                 <div class="col-md-5">@ViewBag.totalPrice TL</div>
                             </div>
                             <div class="row mt-3">
-                                <button class="form-control btn btn-outline-primary">
+                                @*orderCompleteRequestMessage*@
+                                <button type="submit" class="form-control btn btn-outline-primary">
                                     Siparişi
                                     Tamamla
                                 </button>
@@ -196,7 +194,7 @@
                                             <div class="form-group">
                                                 <label for="register-address" class="col-form-label">Açık Adres</label>
                                                 <textarea class="form-control" id="register-address" rows="3" cols="200"
-                                                          maxlength="200" placeholder="Adresiniz" required></textarea>
+                                                          maxlength="200" placeholder="Adresiniz"></textarea>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -213,23 +211,24 @@
                             <div class="row ml-1" id="adresSecenekleri">
                                 @foreach (var x in @Model.getBasketResponseMessage.data.addressData)
                                 {
-                    <div class="card mr-2 mb-2">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <!-- Kullanıcının kayıtlı adresindeki il -->
-                                    <h5 class="card-title">@x.CITY</h5>
+                            <div class="card mr-2 mb-2">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <!-- Kullanıcının kayıtlı adresindeki il -->
+                                            <h5 class="card-title">@x.CITY</h5>
+                                        </div>
+                                        <div class="col-md-2 form-check" style="text-align: right;">
+                                            <input class="form-check-input" type="radio" name="addressRadios" value="@(x.ADDRESSID)">
+                                        </div>
+                                    </div>
+                                    <!-- Kullanıcının kayıtlı adresindeki ilçe -->
+                                    <h6 class="card-subtitle mb-2 text-muted">@x.DISTRICT</h6>
+                                    <!-- Kullanıcının kayıtlı adresindeki açık adres -->
+                                    <p class="card-text">@x.OPENADDRESS</p>
                                 </div>
-                                <div class="col-md-2 form-check" style="text-align: right;">
-                                    <input class="form-check-input" type="radio" name="addressRadios" id="@("radio"+x.ADDRESSID)">
-                                </div>
-                            </div>
-                            <!-- Kullanıcının kayıtlı adresindeki ilçe -->
-                            <h6 class="card-subtitle mb-2 text-muted">@x.DISTRICT</h6>
-                            <!-- Kullanıcının kayıtlı adresindeki açık adres -->
-                            <p class="card-text">@x.OPENADDRESS</p>
-                        </div>
-                    </div>}
+                            </div>}
+                                @Html.HiddenFor(x => x.orderCompleteRequestMessage.addressID , new { @id= "addressIdHidden" })
                             </div>
                         </div>
                         <!-- Ödeme yöntemi için oluşturduğumuz collapse -->
@@ -238,15 +237,15 @@
                             <br>
                             <div class="form-check">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2"
-                                           id="kapidaOdemeRadio" value="option3">
+                                    <input class="form-check-input" type="radio" name="odemeRadio"
+                                           id="kapidaOdemeRadio" value="1">
                                     <label class="form-check-label" for="kapidaOdemeRadio">Kapıda Ödeme</label>
                                 </div>
                             </div>
                             <div class="form-check">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2"
-                                           id="onlineKrediKartıRadio" value="option4" data-toggle="collapse"
+                                    <input class="form-check-input" type="radio" name="odemeRadio"
+                                           id="onlineKrediKartıRadio" value="2" data-toggle="collapse"
                                            data-target="#collapseOnlineKrediKartı" aria-expanded="false"
                                            aria-controls="collapseOnlineKrediKartı">
                                     <label class="form-check-label" for="onlineKrediKartıRadio">
@@ -265,26 +264,22 @@
                                                 <div class="form-group col-md-2">
                                                     <input type="text" class="form-control" id="inputEmail4"
                                                            pattern="\d{4}"
-                                                           title="Bu input'a sadece 4 karakterli sayısal değer girilebilir"
-                                                           required>
+                                                           title="Bu input'a sadece 4 karakterli sayısal değer girilebilir">
                                                 </div>
                                                 <div class="form-group col-md-2">
                                                     <input type="text" class="form-control" id="inputPassword4"
                                                            pattern="\d{4}"
-                                                           title="Bu input'a sadece 4 karakterli sayısal değer girilebilir"
-                                                           required>
+                                                           title="Bu input'a sadece 4 karakterli sayısal değer girilebilir">
                                                 </div>
                                                 <div class="form-group col-md-2">
                                                     <input type="text" class="form-control" id="inputPassword4"
                                                            pattern="\d{4}"
-                                                           title="Bu input'a sadece 4 karakterli sayısal değer girilebilir"
-                                                           required>
+                                                           title="Bu input'a sadece 4 karakterli sayısal değer girilebilir">
                                                 </div>
                                                 <div class="form-group col-md-2">
                                                     <input type="text" class="form-control" id="inputPassword4"
                                                            pattern="\d{4}"
-                                                           title="Bu input'a sadece 4 karakterli sayısal değer girilebilir"
-                                                           required>
+                                                           title="Bu input'a sadece 4 karakterli sayısal değer girilebilir">
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -292,7 +287,7 @@
                                                     <label for="kartUzerinkiIsim">Kart Üzerindeki İsim</label>
                                                 </div>
                                                 <div class="form-group col-md-8">
-                                                    <input type="text" class="form-control" id="inputEmail4" required>
+                                                    <input type="text" class="form-control" id="inputEmail4">
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -354,8 +349,7 @@
                                                 <div class="form-group col-md-4">
                                                     <input type="text" class="form-control" id="inputEmail4"
                                                            pattern="\d{4}"
-                                                           title="Bu input'a sadece 4 karakterli sayısal değer girilebilir"
-                                                           required>
+                                                           title="Bu input'a sadece 4 karakterli sayısal değer girilebilir">
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -381,6 +375,7 @@
                                 </div>
                             </div>
                         </div>
+                        @Html.HiddenFor(x => x.orderCompleteRequestMessage.paymentID, new { @id="paymentIdHidden"})
                         <div class="form-group">
                             <label class="col-form-label">Kargo şirketi seçiniz :</label>
                             <br>
@@ -424,6 +419,7 @@
 
         </div>
     </div>
+                                    }
 
     <!-- Footer -->
     <footer class="mt-5 py-2 bg-dark text-white">
@@ -438,6 +434,13 @@
 
     <script src="js/jquery.js" type="text/JavaScript"></script>
     <script src="js/bootstrap.js" type="text/JavaScript"></script>
+
+    <script>$(document).ready(function () {
+        $("input:radio[name=addressRadios]").change(function () { $("#addressIdHidden").val(this.value); });
+        $("input:radio[name=odemeRadio]").change(function () { $("#paymentIdHidden").val(this.value); });
+
+            
+        });</script>
 </body>
 
 </html>

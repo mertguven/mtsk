@@ -1,13 +1,5 @@
 ﻿<Properties StartupConfiguration="{494198A8-C539-416B-BAB7-EE20450BA57C}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="mtsk/Views/MyBasket/Index.cshtml">
-    <Files>
-      <File FileName="mtsk/Views/MyBasket/Index.cshtml" Line="27" Column="40" />
-      <File FileName="mtsk/Controllers/MyBasketController.cs" Line="43" Column="29" />
-      <File FileName="mtsk/ViewModel/MyBasketViewModel.cs" Line="12" Column="38" />
-      <File FileName="mtsk/Models/Responses/GetBasketResponseMessage.cs" />
-      <File FileName="mtsk/Views/Home/Index.cshtml" Line="386" Column="33" />
-      <File FileName="mtsk/Models/Requests/OrderCompleteRequestMessage.cs" Line="10" Column="33" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -38,7 +30,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/mert/Documents/GitHub/mtsk/mtsk/Controllers/MyBasketController.cs" relfile="mtsk/Controllers/MyBasketController.cs" line="41" column="1" />
+      <Breakpoint file="/Users/mert/Documents/GitHub/mtsk/mtsk/Controllers/MyBasketController.cs" relfile="mtsk/Controllers/MyBasketController.cs" line="80" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
