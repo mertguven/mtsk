@@ -97,6 +97,11 @@
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\MyBasketViewModel.cs" />
     <Compile Include="Models\Responses\GetBasketResponseMessage.cs" />
+    <Compile Include="Models\Requests\AddOrderRequestMessage.cs" />
+    <Compile Include="Models\Responses\AddOrderResponseMessage.cs" />
+    <Compile Include="Models\Requests\DeleteOrderRequestMessage.cs" />
+    <Compile Include="Models\Responses\DeleteOrderResponseMessage.cs" />
+    <Compile Include="Models\Requests\OrderCompleteRequestMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

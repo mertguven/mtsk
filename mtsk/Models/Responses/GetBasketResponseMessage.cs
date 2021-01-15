@@ -15,19 +15,15 @@ namespace mtsk.Models.Responses
         }
         public class SiparisData
         {
-            public int USERID { get; set; }
-            public string NAME_ { get; set; }
-            public string SURNAME { get; set; }
-            public int ORDERPIECE { get; set; }
-            public int ORDERPRICE { get; set; }
-            public int ORDERCASE { get; set; }
+            public int TEMPORDERID { get; set; }
+            public int TEMPORDERPIECE { get; set; }
+            public int TEMPORDERPRICE { get; set; }
+            public int TEMPORDERCASE { get; set; }
         }
 
         public class AddressData
         {
-            public int USERID { get; set; }
-            public string NAME_ { get; set; }
-            public string SURNAME { get; set; }
+            public int ADDRESSID { get; set; }
             public string OPENADDRESS { get; set; }
             public string CITY { get; set; }
             public string DISTRICT { get; set; }

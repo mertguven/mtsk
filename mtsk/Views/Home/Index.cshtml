@@ -369,7 +369,7 @@
             </div>
         </div>
         <!-- Maske Siparişi Verme Modal -->
-        <form id="siparisForm">
+        <form method="post" id="siparisForm">
             <div class="modal fade" id="siparisVerBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
                  aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -383,18 +383,22 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="maskeAdetiDropDown" class="col-form-label">Maske adetini seçiniz :</label>
-                                <select name="selectList1" id="maskeAdetiDropDown" class="form-control">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
+                                @{
+                                    List<SelectListItem> listItems = new List<SelectListItem>();
+                                    for (int x = 1; x <= 20; x++) {
+                                        listItems.Add(new SelectListItem
+                                        {
+                                            Text = x.ToString(),
+                                            Value = x.ToString()
+                                        });
+                                    }
+                                }
+                                @Html.DropDownListFor(x => x.addOrderRequestMessage.torderPiece, listItems, new { @class="form-control" })
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
-                            <button id="sepeteEkle" type="submit" class="btn btn-primary">Sepete Ekle</button>
+                            <button type="submit" class="btn btn-primary">Sepete Ekle</button>
                         </div>
                     </div>
                 </div>

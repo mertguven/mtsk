@@ -20,7 +20,6 @@ namespace mtsk.Controllers
                 var url = "https://mtsk-proje.herokuapp.com/api/users/";
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Session["token"]);
                 var response = client.GetStringAsync(url);
-                Console.WriteLine(response.Result);
                 MyProfileViewModel message = new MyProfileViewModel();
                 message.getUserInformationResponseMessage = JsonConvert.DeserializeObject<GetUserInformationResponseMessage>(response.Result);
                 return View(message);
