@@ -15,8 +15,8 @@ namespace mtsk.Models.Responses
             public string userName { get; set; }
             public string userSurname { get; set; }
             public string userEmail { get; set; }
-            public double userTelephone { get; set; }
-            public double userTC { get; set; }
+            public string userTelephone { get; set; }
+            public string userTC { get; set; }
             public string userGender { get; set; }
             public string userPassword { get; set; }
             public int userActive { get; set; }

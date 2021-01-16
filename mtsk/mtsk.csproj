@@ -104,6 +104,11 @@
     <Compile Include="Models\Requests\OrderCompleteRequestMessage.cs" />
     <Compile Include="Models\Responses\OrderCompleteResponseMessage.cs" />
     <Compile Include="Models\Responses\DeleteAllOrderResponseMessage.cs" />
+    <Compile Include="Models\Responses\GetPastOrderResponseMessage.cs" />
+    <Compile Include="Models\Requests\UpdateUserInformationRequestMessage.cs" />
+    <Compile Include="Models\Responses\UpdateUserInformationResponseMessage.cs" />
+    <Compile Include="Models\Requests\DeleteUserAccountRequestMessage.cs" />
+    <Compile Include="Models\Responses\DeleteUserAccountResponseMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

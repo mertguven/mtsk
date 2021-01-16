@@ -17,6 +17,7 @@ namespace mtsk.Controllers
     {
         public int tPrice { get; set; }
         public int tPiece { get; set; }
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -85,7 +86,6 @@ namespace mtsk.Controllers
                     deleteMessage.deleteAllOrderResponseMessage = JsonConvert.DeserializeObject<DeleteAllOrderResponseMessage>(deleteResponse.Result);
                     
                 }
-                //Thread.Sleep(3000);
                 return RedirectToAction("Index", "Home");
             }
         }
