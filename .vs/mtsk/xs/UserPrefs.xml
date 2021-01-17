@@ -1,23 +1,24 @@
 ﻿<Properties StartupConfiguration="{494198A8-C539-416B-BAB7-EE20450BA57C}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="mtsk/Controllers/MyBasketController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="mtsk/Views/MyBasket/Index.cshtml">
     <Files>
-      <File FileName="mtsk/Controllers/MyBasketController.cs" Line="75" Column="67" />
-      <File FileName="mtsk/Views/MyBasket/Index.cshtml" Line="411" Column="40" />
+      <File FileName="mtsk/Views/MyBasket/Index.cshtml" Line="67" Column="79" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="mtsk" expanded="True">
             <Node name="mtsk" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="MyBasketController.cs" selected="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="css" expanded="True">
+                <Node name="sepetimCSS" expanded="True" />
               </Node>
               <Node name="Models" expanded="True" />
-              <Node name="ViewModel" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True" />
                 <Node name="Login" expanded="True" />
-                <Node name="MyBasket" expanded="True" />
+                <Node name="MyBasket" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
                 <Node name="MyProfile" expanded="True" />
                 <Node name="Shared" expanded="True" />
               </Node>
@@ -31,7 +32,9 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/mert/Documents/GitHub/mtsk/mtsk/Controllers/MyBasketController.cs" relfile="mtsk/Controllers/MyBasketController.cs" line="74" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

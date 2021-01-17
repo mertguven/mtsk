@@ -109,6 +109,9 @@
     <Compile Include="Models\Responses\UpdateUserInformationResponseMessage.cs" />
     <Compile Include="Models\Requests\DeleteUserAccountRequestMessage.cs" />
     <Compile Include="Models\Responses\DeleteUserAccountResponseMessage.cs" />
+    <Compile Include="Models\Responses\GetAllAddressResponseMessage.cs" />
+    <Compile Include="Models\Requests\AddAddressRequestMessage.cs" />
+    <Compile Include="Models\Responses\AddAddressResponseMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

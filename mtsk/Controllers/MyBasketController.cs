@@ -23,10 +23,13 @@ namespace mtsk.Controllers
         {
             using (var client = new HttpClient())
             {
+                var addressUrl = "https://mtsk-proje.herokuapp.com/api/temporder/getaddress";
                 var url = "https://mtsk-proje.herokuapp.com/api/temporder/";
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Session["token"]);
                 var response = client.GetStringAsync(url);
+                var addressResponse = client.GetStringAsync(addressUrl);
                 MyBasketViewModel message = new MyBasketViewModel();
+                message.getAllAddressResponseMessage = JsonConvert.DeserializeObject<GetAllAddressResponseMessage>(addressResponse.Result);
                 message.getBasketResponseMessage = JsonConvert.DeserializeObject<GetBasketResponseMessage>(response.Result);
                 ViewBag.totalPrice = 0;
                 ViewBag.totalPiece = 0;
@@ -59,6 +62,23 @@ namespace mtsk.Controllers
                 MyBasketViewModel message = new MyBasketViewModel();
                 message.deleteOrderResponseMessage = JsonConvert.DeserializeObject<DeleteOrderResponseMessage>(responseString.Result);
                 Console.WriteLine(message.deleteOrderResponseMessage.success);
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AddAddress(MyBasketViewModel myBasketViewModel)
+        {
+            using (var client = new HttpClient())
+            {
+                var url = "https://mtsk-proje.herokuapp.com/api/temporder/ADDress";
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Session["token"]);
+                var response = client.PostAsJsonAsync(url, myBasketViewModel.addAddressRequestMessage);
+                response.Wait();
+                var q = response.Result;
+                var responseString = q.Content.ReadAsStringAsync();
+                MyBasketViewModel message = new MyBasketViewModel();
+                message.addAddressResponseMessage = JsonConvert.DeserializeObject<AddAddressResponseMessage>(responseString.Result);
                 return RedirectToAction("Index");
             }
         }
